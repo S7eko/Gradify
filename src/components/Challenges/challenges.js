@@ -2,7 +2,7 @@
 import React from 'react';
 import Challenge from './challenge';
 import classes from './challenges.module.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const challengesData = [
     {
