@@ -1,0 +1,150 @@
+:root {
+    --primary-color: #5dade2d1;
+    /* Light Blue */
+    --secondary-color: #f39c12;
+    /* Calm Orange */
+    --bg-color: #ecf0f1;
+    /* Light Background */
+    --text-color: #405971;
+    /* Dark but Soft Text Color */
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    /* Clean font for the body */
+}
+
+/* Challenge Card Styles */
+.challengeCard {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    text-align: center;
+    margin-bottom: 20px;
+    width: 400px;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px auto;
+    height: 250px;
+}
+
+.challengeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styles */
+.title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+    /* Bolder title for emphasis */
+}
+
+/* Description Styles */
+.description {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    /* Improve readability */
+}
+
+/* Meta Information Styles */
+.meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+/* Level Badge Styles */
+.level,
+.category {
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    /* Slightly reduced font size for better fit */
+}
+
+.level {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.category {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Start Button Styles */
+.startBtn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: background var(--transition-speed);
+    cursor: pointer;
+    margin-top: 20px;
+    /* Spacing above the button */
+    text-decoration: none;
+    /* Remove underline if it's a link */
+}
+
+.startBtn:hover {
+    background-color: #3498db;
+    /* Lighter blue on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .challengeCard {
+        padding: 15px;
+        /* Reduce padding on smaller screens */
+    }
+
+    .title {
+        font-size: 1.5rem;
+        /* Adjust title size */
+    }
+
+    .description {
+        font-size: 1rem;
+        /* Adjust description size */
+    }
+
+    .startBtn {
+        padding: 8px 20px;
+        /* Adjust button padding */
+        font-size: 1rem;
+        /* Adjust button font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .challengeCard {
+        margin-bottom: 15px;
+        /* Reduce margin on mobile */
+    }
+
+    .meta {
+        flex-direction: column;
+        /* Stack meta items on mobile */
+        align-items: center;
+        /* Center align on mobile */
+        font-size: 0.9rem;
+    }
+
+    .level {
+        margin-bottom: 10px;
+        /* Space between level and category */
+    }
+}

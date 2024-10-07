@@ -1,0 +1,119 @@
+/* Centering the entire container */
+.containers {
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #f0f4f8; /* Optional: background color */
+}
+
+/* Styling for the login container */
+.loginContainer {
+    max-width: 400px; /* Maximum width */
+    width: 100%; /* Full width on smaller screens */
+    margin: 0; /* Remove any margins */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Optional: white background for contrast */
+}
+
+/* Additional styles remain unchanged */
+.title {
+    text-align: center;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input:focus {
+    border-color: #80bdff; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+
+.button:disabled {
+    background-color: #ccc; /* Grey background */
+    cursor: not-allowed; /* Not allowed cursor */
+}
+
+.toggleText {
+    margin-top: 15px;
+    text-align: center; /* Center the text */
+}
+
+.toggleButton {
+    background: none;
+    border: none;
+    color: #007bff; /* Primary button color */
+    cursor: pointer; /* Pointer cursor */
+    text-decoration: underline; /* Underline for the button */
+    font-size: 0.9em; /* Slightly smaller font */
+}
+
+.toggleButton:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
+
+.registerText {
+    margin-top: 15px;
+    text-align: center; /* Center the text */
+}
+
+.registerLink {
+    color: #007bff; /* Primary button color */
+    cursor: pointer; /* Pointer cursor */
+    text-decoration: underline; /* Underline for the button */
+    font-size: 0.9em; /* Slightly smaller font */
+}
+
+.registerLink:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
+
+@media (max-width: 500px) {
+    .loginContainer {
+        margin: 20px; /* Ensure consistent margins for smaller screens */
+        padding: 15px; /* Ensure consistent padding for smaller screens */
+    }
+    .button {
+        font-size: 0.9em; /* Adjust button font size for smaller screens */
+    }
+}

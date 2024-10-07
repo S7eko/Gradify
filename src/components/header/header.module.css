@@ -1,0 +1,84 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    position: fixed; /* تأكد من أن الشريط يبقى ثابتًا */
+    top: 0; /* تأكد من أنه في أعلى الصفحة */
+    left: 0; /* التأكد من أنه يبدأ من اليسار */
+    right: 0; /* التأكد من أنه يمتد إلى اليمين */
+    z-index: 1000; /* إبقاء z-index مرتفع */
+}
+
+.logo {
+    color: #ecf0f1;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+
+.nav a:hover {
+    background-color: #34495e;
+    border-radius: 5px;
+}
+
+.navBtn {
+    display: none;
+    color: #ecf0f1;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.navCloseBtn {
+    display: none;
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 200px;
+        height: 100vh;
+        background-color: #2c3e50;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s ease;
+        z-index: 999; /* ضع z-index أقل من .header */
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .navBtn {
+        display: block;
+    }
+
+    .navCloseBtn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}

@@ -1,0 +1,64 @@
+.dashboardContainer {
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 70px auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.completedChallengesContainer {
+    margin-top: 30px;
+}
+
+.completedChallengesList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.completedChallengeItem {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.linkContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.linkBtn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.linkBtn:hover {
+    background-color: #2980b9;
+}
