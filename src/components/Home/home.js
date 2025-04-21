@@ -1,64 +1,65 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './home.module.css';
-import Courses from '../courses/couses';
+import Courses from '../projects/progect'; // مغيرتش الاستيراد
 
 function Home() {
-    const navigate = useNavigate(); // Create navigate function
+    const navigate = useNavigate();
 
-    const handleStartChallenges = () => {
-        navigate('/challenges'); // Redirect to the challenges page
+    const handleBrowseProjects = () => {
+        navigate('/challenges'); // لسه محتاج تغيرها لـ /projects لو انت عامل Route كده
     };
 
     return (
         <div className={classes.home}>
             <section className={classes.hero}>
-                <h1 className={classes.heroTitle}>Welcome to the CTF Platform</h1>
+                <h1 className={classes.heroTitle}>مرحبًا بك في منصة مشاريع التخرج</h1>
                 <p className={classes.heroDescription}>
-                    Test your cybersecurity skills and compete against others in a variety of challenges.
+                    تصفح مشاريع التخرج السابقة، واستلهم أفكارًا لمشروعك، أو شارك مشروعك مع الآخرين.
                 </p>
-                <button onClick={handleStartChallenges} className={classes.ctaBtn}>
-                    Start Challenges
+                <button onClick={handleBrowseProjects} className={classes.ctaBtn}>
+                    تصفح المشاريع
                 </button>
             </section>
 
             <section className={classes.features}>
                 <div className={classes.feature}>
-                    <h2 className={classes.featureTitle}>Explore Challenges</h2>
+                    <h2 className={classes.featureTitle}>عرض المشاريع</h2>
                     <p className={classes.featureDescription}>
-                        Participate in a wide range of cybersecurity challenges including cryptography, web security, and more.
+                        استعرض مشاريع الطلاب السابقة في مجالات متنوعة مثل الذكاء الاصطناعي، الويب، الأمن السيبراني، وغيرها.
                     </p>
-                    <button onClick={handleStartChallenges} className={classes.featureButton}>
-                        Explore Challenges
+                    <button onClick={handleBrowseProjects} className={classes.featureButton}>
+                        عرض المشاريع
                     </button>
                 </div>
 
                 <div className={classes.feature}>
-                    <h2 className={classes.featureTitle}>Leaderboard</h2>
+                    <h2 className={classes.featureTitle}>أفضل المشاريع</h2>
                     <p className={classes.featureDescription}>
-                        Track your progress and see where you stand among the top cybersecurity enthusiasts.
+                        تعرف على المشاريع الأعلى تقييمًا وشاهد ما حققه طلاب السنوات السابقة.
                     </p>
-                    <button onClick={() => navigate('/leaderboard')} className={classes.featureButton}>
-                        View Leaderboard
+                    <button onClick={() => navigate('/top-projects')} className={classes.featureButton}>
+                        أفضل المشاريع
                     </button>
                 </div>
 
                 <div className={classes.feature}>
-                    <h2 className={classes.featureTitle}>For Beginners & Experts</h2>
+                    <h2 className={classes.featureTitle}>لكل المستويات</h2>
                     <p className={classes.featureDescription}>
-                        Challenges are designed for all skill levels, from beginners to advanced users.
+                        المشاريع متاحة لجميع التخصصات والمستويات، سواء كنت مبتدئًا أو متقدمًا.
                     </p>
                 </div>
             </section>
-            <Courses />
+
+            <Courses /> {/* نفس اسم المكون زي ما هو */}
 
             <section className={classes.cta}>
-                <h2 className={classes.ctaTitle}>Join the Competition Now!</h2>
+                <h2 className={classes.ctaTitle}>شارك مشروعك الآن!</h2>
                 <p className={classes.ctaDescription}>
-                    Register and compete in real-time against others in the cybersecurity world.
+                    قم بالتسجيل وابدأ برفع مشروعك لتلهم طلاب آخرين، وكن جزءًا من مجتمع الإبداع الطلابي.
                 </p>
                 <button onClick={() => navigate('/register')} className={classes.ctaBtn}>
-                    Register Now
+                    سجل وشارك مشروعك
                 </button>
             </section>
         </div>

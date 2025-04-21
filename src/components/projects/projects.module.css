@@ -1,0 +1,100 @@
+/* projects.module.css */
+
+/* تنسيق الحاوية العامة للمشاريع */
+.projectsContainer {
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+    color: #333;
+    text-align: center;
+    
+}
+
+/* العنوان */
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+/* قائمة المشاريع */
+.projectList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* بطاقة المشروع */
+.projectCard {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 350px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.projectCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* صورة المشروع */
+.projectImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* عنوان المشروع */
+.projectTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 15px 20px;
+    color: #34495e;
+}
+
+/* وصف المشروع */
+.projectDescription {
+    font-size: 16px;
+    margin: 0 20px 20px;
+    color: #7f8c8d;
+    line-height: 1.5;
+}
+
+/* زر عرض المشروع */
+.projectButton {
+    display: block;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 20px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.projectButton:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* تحسينات لتناسب الأجهزة المحمولة */
+@media (max-width: 768px) {
+    .projectsContainer {
+        padding: 20px;
+    }
+
+    .projectCard {
+        max-width: 100%;
+    }
+}

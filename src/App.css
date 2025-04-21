@@ -1,14 +1,35 @@
-/* في ملف CSS الرئيسي مثل index.css أو App.css */
-html, body, #root {
+/* index.css أو App.css */
+
+html,
+body,
+#root {
     height: 100%;
     margin: 0;
     padding: 0;
+    direction: rtl;
+    /* اتجاه الكتابة من اليمين لليسار */
+    text-align: right;
+    /* توجيه النصوص */
+    font-family: 'Cairo', sans-serif;
+    /* خط عربي أنيق */
+    background-color: #f9f9f9;
 }
 
+/* عنصر التطبيق الرئيسي */
 .App {
-    min-height: 100vh; /* يضمن أن التطبيق يغطي ارتفاع الشاشة بالكامل */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* محتوى الصفحة */
 .content {
-    /* flex: 1; يملأ المساحة بين الهيدر والـ footer */
+    flex: 1;
+    padding: 1rem;
+}
+
+/* عناصر عامة */
+button {
+    font-family: inherit;
+    cursor: pointer;
 }

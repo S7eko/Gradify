@@ -109,6 +109,8 @@ body {
     .challengeCard {
         padding: 15px;
         /* Reduce padding on smaller screens */
+        margin-bottom: 10px;
+        height: 250px;
     }
 
     .title {
