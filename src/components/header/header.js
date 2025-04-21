@@ -12,7 +12,7 @@ function Navbar() {
 
     return (
         <header className={classes.header}>
-            <Link to="/" className={classes.logo}>مشروعي</Link> {/* تغيير إلى Link */}
+            <Link to="/" className={classes.logo}>احمد خاطر مشروعي</Link> {/* تغيير إلى Link */}
             <nav className={`${classes.nav} ${isOpen ? classes.active : ''}`}>
                 <Link to="/" onClick={toggleNavbar}>الرئيسية</Link> {/* تغيير إلى Link */}
                 <Link to="/AllProjects" onClick={toggleNavbar}>المشاريع</Link> {/* تغيير إلى Link */}
