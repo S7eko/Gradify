@@ -1,146 +1,201 @@
-/* Container for the entire projects page */
 .projectsContainer {
-  padding: 4rem 5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 70px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
   min-height: 100vh;
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Title for the projects section */
 .title {
-  font-size: 3rem;
-  font-weight: 700;
   text-align: center;
-  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
   color: #2c3e50;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: 'Roboto', sans-serif;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Wrapper for the list of projects */
+/* المشروع الرئيسي */
 .projectList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
-  width: 100%;
-  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  row-gap: 2.5rem;
 }
 
-/* Card for each project */
 .projectCard {
-  background-color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
+  flex: 1 1 300px;
   max-width: 350px;
-  height: 100%;
-  padding: 0.5rem;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Image inside the project card */
+.projectCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* صورة المشروع */
+/* صورة المشروع */
+/* صورة المشروع */
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  /* اجعل الارتفاع يتناسب مع ارتفاع البطاقة */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
+}
+
 .projectImage {
   width: 100%;
-  height: 200px;
+  /* تجعل الصورة عرضها يغطي العرض بالكامل */
+  height: 100%;
+  /* جعل الصورة تأخذ كامل الارتفاع */
   object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  /* بحيث تملأ الصورة المساحة بالكامل مع الحفاظ على التناسب */
+  transition: transform 0.4s ease;
 }
 
-/* Title of the project */
-.projectTitle {
-  font-size: 1.6rem;
-  font-weight: 600;
-  padding: 1rem;
-  color: #34495e;
-  text-align: center;
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
-}
-
-/* Description for the project */
-.projectDescription {
-  font-size: 1rem;
-  color: #7f8c8d;
-  padding: 0 1rem 1rem;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-}
-
-/* Button to view project details */
-.projectButton {
-  display: block;
-  margin: 0 auto;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  background-color: #2980b9;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 1rem;
-}
-
-/* Hover effect on the project card */
-.projectCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* Hover effect on the button */
-.projectButton:hover {
-  background-color: #1abc9c;
-  transform: translateY(-3px);
-}
-
-/* Add shadow effect to image on hover */
-.projectImage:hover {
+.projectCard:hover .projectImage {
   transform: scale(1.05);
 }
 
-/* For smaller screens, reduce padding */
-@media (max-width: 768px) {
-  .projectsContainer {
-    padding: 2rem;
-  }
-
-  .projectCard {
-    max-width: 100%;
-  }
-
-  .title {
-    font-size: 2.2rem;
-  }
-
-  .projectButton {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-  }
+/* محتوى المشروع */
+.projectContent {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.8rem;
-  }
+.projectTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
 
-  .projectButton {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-  }
+.projectDescription {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.projectButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.projectButton:hover {
+  background-color: #0056b3;
+}
+
+/* حالة لا يوجد مشاريع */
+.emptyState {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.noProjects {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.uploadLink {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.uploadLink:hover {
+  background-color: #218838;
+}
+
+/* تحميل أو خطأ */
+.loadingContainer,
+.errorContainer {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.retryButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.retryButton:hover {
+  background-color: #c82333;
+}
+/* Add to your Allprojects.module.css */
+
+.actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.projectButton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.projectButton:hover {
+  background-color: #2980b9;
+}
+
+.deleteButton {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-grow: 1;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
 }

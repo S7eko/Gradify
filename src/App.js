@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/AllProjects" element={<AllProjects />} />
-            <Route path="/ProjectDetails/:id" element={<ProjectDetails  />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="/Uploded" element={<UpLoader />} />
             <Route path="/login" element={<Login />} /> {/* Updated route for Login */}
             <Route path="/register" element={<Register />} /> 

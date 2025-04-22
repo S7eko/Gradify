@@ -1,47 +1,154 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // استيراد Link من react-router-dom
-import classes from './Allprojects.module.css'; // تأكد من أن ملف CSS موجود
-
-// افتراضًا، لديك بيانات للمشاريع
-const projectsData = [
-  {
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    title: 'المشروع 1',
-    description: 'وصف قصير للمشروع.',
-    id: 1 // إضافة معرّف فريد لكل مشروع
-  },
-  {
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    title: 'المشروع 2',
-    description: 'نظرة عامة قصيرة على المشروع الثاني.',
-    id: 2
-  },
-  {
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    title: 'المشروع 3',
-    description: 'وصف لهذا المشروع الثالث.',
-    id: 3
-  },
-  // أضف المزيد من المشاريع حسب الحاجة
-];
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import classes from './Allprojects.module.css';
 
 const AllProjects = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('https://project-uploader.vercel.app/api/v1/projects');
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      let projectsData = [];
+      if (Array.isArray(result)) {
+        projectsData = result;
+      } else if (result.data && Array.isArray(result.data)) {
+        projectsData = result.data;
+      } else if (result.projects && Array.isArray(result.projects)) {
+        projectsData = result.projects;
+      }
+
+      setProjects(projectsData);
+    } catch (err) {
+      setError(err.message);
+      console.error('Error fetching projects:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (projectId) => {
+    try {
+      const result = await Swal.fire({
+        title: 'هل أنت متأكد؟',
+        text: "لن تتمكن من استعادة هذا المشروع!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'نعم، احذفه!',
+        cancelButtonText: 'إلغاء',
+        reverseButtons: true
+      });
+
+      if (result.isConfirmed) {
+        const response = await fetch(`https://project-uploader.vercel.app/api/v1/projects/${projectId}`, {
+          method: 'DELETE'
+        });
+
+        if (!response.ok) {
+          throw new Error('فشل في حذف المشروع');
+        }
+
+        // Refresh the projects list after deletion
+        await fetchProjects();
+
+        Swal.fire(
+          'تم الحذف!',
+          'تم حذف المشروع بنجاح.',
+          'success'
+        );
+      }
+    } catch (error) {
+      console.error('Error deleting project:', error);
+      Swal.fire(
+        'خطأ!',
+        'حدث خطأ أثناء محاولة حذف المشروع.',
+        'error'
+      );
+    }
+  };
+
+  if (loading) {
+    return <div className={classes.loadingContainer}>جاري تحميل المشاريع...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className={classes.errorContainer}>
+        <p>حدث خطأ أثناء جلب البيانات: {error}</p>
+        <button onClick={fetchProjects} className={classes.retryButton}>
+          حاول مرة أخرى
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className={classes.projectsContainer}>
       <h2 className={classes.title}>جميع المشاريع</h2>
-      <div className={classes.projectList}>
-        {projectsData.map((project) => (
-          <div key={project.id} className={classes.projectCard}>
-            <img src={project.image} alt={project.title} className={classes.projectImage} />
-            <h3 className={classes.projectTitle}>{project.title}</h3>
-            <p className={classes.projectDescription}>{project.description}</p>
-            {/* استخدام Link للتنقل إلى صفحة التفاصيل */}
-            <Link to={`/projectdetails/${project.id}`} className={classes.projectButton}>عرض التفاصيل</Link>
-          </div>
-        ))}
-      </div>
+
+      {projects.length === 0 ? (
+        <div className={classes.emptyState}>
+          <p className={classes.noProjects}>لا توجد مشاريع متاحة حالياً</p>
+          <Link to="/upload" className={classes.uploadLink}>
+            أضف مشروعاً جديداً
+          </Link>
+        </div>
+      ) : (
+        <div className={classes.projectList}>
+          {projects.map((project) => (
+            <div key={project.id || project._id} className={classes.projectCard}>
+              <div className={classes.imageContainer}>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className={classes.projectImage}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/300x200?text=Error+Loading+Image';
+                  }}
+                />
+              </div>
+              <div className={classes.projectContent}>
+                <h3 className={classes.projectTitle}>{project.title}</h3>
+                <p className={classes.projectDescription}>
+                  {project.short_description || 'لا يوجد وصف متاح'}
+                </p>
+                <div className={classes.actions}>
+                  <Link
+                    to={`/projects/${project.id || project._id}`}
+                    className={classes.projectButton}
+                  >
+                    عرض التفاصيل
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(project.id || project._id)}
+                    className={classes.deleteButton}
+                  >
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default AllProjects;
