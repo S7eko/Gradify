@@ -19,7 +19,8 @@ function Navbar() {
                 <Link to="/Uploded" onClick={toggleNavbar}>لوحة التحكم</Link>
                 <Link to="/dashboard" onClick={toggleNavbar}>أفضل المشاريع</Link> {/* تغيير إلى Link */}
                 <Link to="/login" onClick={toggleNavbar}>تسجيل الدخول</Link> {/* تغيير إلى Link */}
-                <Link to="/leaderboard" onClick={toggleNavbar}>تواصل معنا</Link> {/* تغيير إلى Link */}
+                <Link to="/addarticle" onClick={toggleNavbar}>اضافة مقال</Link> {/* تغيير إلى Link */}
+                <Link to="/ShowBlog" onClick={toggleNavbar}>المقالات</Link> {/* تغيير إلى Link */}
                 {/* <Link to="/contact" onClick={toggleNavbar}>Contact</Link>  */}
                 <button className={classes.navCloseBtn} onClick={toggleNavbar}>
                     <FaTimes />

@@ -1,0 +1,216 @@
+/* أساسيات التصميم */
+
+/* الحاوية الرئيسية */
+.container_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f7fa;
+  /* تغيير الخلفية لتكون أكثر هدوءًا */
+}
+
+/* النموذج */
+.add_course {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* عند تمرير الماوس */
+.add_course:hover {
+  transform: translateY(-5px);
+}
+
+/* العنوان */
+.add_course h2 {
+  font-size: 2.2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* نمط الحقول */
+.form_group {
+  margin-bottom: 2rem;
+}
+
+.form_group label {
+  font-size: 1rem;
+  color: #666;
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+.form_group input,
+.form_group select,
+.form_group textarea {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form_group input:focus,
+.form_group select:focus,
+.form_group textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* الرسائل الخطأ */
+.error_message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+  font-weight: 500;
+}
+
+/* الحقول المعتمدة */
+.has_error input,
+.has_error select,
+.has_error textarea {
+  border-color: #e74c3c;
+}
+
+/* زر رفع الملف */
+.file_input_container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.file_input_label {
+  background-color: #007BFF;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.file_input_label:hover {
+  background-color: #0056b3;
+}
+
+.image_preview img {
+  width: 100%;
+  max-width: 160px;
+  border-radius: 8px;
+  margin-top: 1rem;
+  object-fit: cover;
+}
+
+/* فقرة المحتوى */
+.content_block_container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.remove_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 1.2rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.remove_button:hover {
+  background-color: #c0392b;
+}
+
+.add_button {
+  padding: 0.8rem 1.6rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.add_button:hover {
+  background-color: #218838;
+}
+
+/* زر إرسال */
+.submit_button {
+  padding: 1rem 2.5rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit_button:hover {
+  background-color: #0056b3;
+}
+
+.submit_button:disabled {
+  background-color: #b0bec5;
+  cursor: not-allowed;
+}
+
+/* دوران */
+.spinner_icon {
+  animation: spin 1s linear infinite;
+  margin-right: 0.6rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* الفواصل والتباعد */
+.form_actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.form_actions button {
+  padding: 0.8rem 1.6rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.form_actions button:hover {
+  background-color: #0056b3;
+}

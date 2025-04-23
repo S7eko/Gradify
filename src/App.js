@@ -12,6 +12,9 @@ import ProjectDetails from './components/projects/projectDetalis';
 import UpLoader from './components/projects/uploade';
 import Login from './components/contact/logIn'; // Import the Login component
 import Register from './components/contact/RegisterPage'; // Import the Register component
+import AddArticle from './components/blog/addArticle';
+import BlogList from './components/blog/blogcomponent';
+import BlogDetails from './components/blog/blogDetails';
 
 function App() {
   return (
@@ -25,7 +28,10 @@ function App() {
             <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="/Uploded" element={<UpLoader />} />
             <Route path="/login" element={<Login />} /> {/* Updated route for Login */}
-            <Route path="/register" element={<Register />} /> 
+            <Route path="/register" element={<Register />} />
+            <Route path="/addarticle" element={<AddArticle />} />
+            <Route path="/ShowBlog" element={<BlogList />} /> 
+            <Route path="/blog/:id" element={<BlogDetails />} />
           </Routes>
         </div>
       </Router>
