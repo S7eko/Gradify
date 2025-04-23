@@ -7,10 +7,29 @@ const AllProjects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
+    fetchCurrentUser();
     fetchProjects();
   }, []);
+
+  const fetchCurrentUser = async () => {
+    try {
+      const response = await fetch("https://skillbridge.runasp.net/api/Users/currentUser", {
+        credentials: 'include' // if you need to send cookies
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const user = await response.json();
+      setUserRole(user?.role);
+    } catch (err) {
+      console.error('Error fetching user data:', err);
+    }
+  };
 
   const fetchProjects = async () => {
     try {
@@ -64,7 +83,6 @@ const AllProjects = () => {
           throw new Error('فشل في حذف المشروع');
         }
 
-        // Refresh the projects list after deletion
         await fetchProjects();
 
         Swal.fire(
@@ -135,12 +153,14 @@ const AllProjects = () => {
                   >
                     عرض التفاصيل
                   </Link>
-                  <button
-                    onClick={() => handleDelete(project.id || project._id)}
-                    className={classes.deleteButton}
-                  >
-                    حذف
-                  </button>
+                  {userRole === 'Instructor' && (
+                    <button
+                      onClick={() => handleDelete(project.id || project._id)}
+                      className={classes.deleteButton}
+                    >
+                      حذف
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
