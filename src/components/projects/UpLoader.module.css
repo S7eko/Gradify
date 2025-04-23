@@ -1,56 +1,196 @@
+/* الحاوية الرئيسية */
 .container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 100px;
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  color: #333;
 }
 
+/* العنوان الرئيسي */
 .title {
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #444;
 }
 
+/* الفورم */
 .form {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
+/* مجموعة الحقول */
 .formGroup {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+/* التسمية */
 .label {
   font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
+  font-size: 16px;
+  color: #555;
+  text-transform: uppercase;
 }
 
+/* الحقول النصية */
 .input,
 .textarea {
   width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
+/* تأثير التركيز على الحقول */
+.input:focus,
+.textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* المنطقة النصية */
 .textarea {
   height: 150px;
+  resize: vertical;
 }
 
+/* زر رفع المشروع */
 .submitButton {
-  padding: 10px 15px;
+  padding: 14px 20px;
   background-color: #4CAF50;
   color: white;
+  font-size: 16px;
+  font-weight: 600;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
 }
 
+/* تأثير عند المرور على الزر */
 .submitButton:hover {
   background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* حالة الزر عند التحميل */
+.submitButton.uploading {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* محتوى الزر عند التحميل */
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buttonProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  background-color: #45a049;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* الحقول الخاصة بالملف */
+.fileInput {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* عرض معلومات الملف */
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.fileInfo i {
+  color: #f44336;
+}
+
+.removeFile {
+  background: none;
+  border: none;
+  color: #f44336;
+  cursor: pointer;
+}
+
+.removeFile:hover {
+  text-decoration: underline;
+}
+
+/* معاينة الصورة */
+.imagePreviewContainer {
+  position: relative;
+  margin-top: 15px;
+}
+
+.imagePreview {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.removeImage {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  color: #f44336;
+}
+
+.removeImage:hover {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* عرض تقدم التحميل */
+.uploading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploading i {
+  font-size: 24px;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

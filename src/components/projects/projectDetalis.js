@@ -53,9 +53,7 @@ const ProjectDetails = () => {
   // فتح ملف PDF في نافذة جديدة
   const handleOpenPdf = (pdfUrl) => {
     const newWindow = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
-    if (!newWindow) {
-      alert('يرجى السماح بفتح النوافذ المنبثقة في إعدادات المتصفح.');
-    }
+
   };
 
   // معالجة حالات التحميل أو الخطأ أو عدم وجود مشروع
@@ -141,17 +139,9 @@ const ProjectDetails = () => {
                 >
                   📄 عرض الملف
                 </button>
-                <a
-                  href={project.pdf_url}
-                  download={`${project.title || 'project'}.pdf`}
-                  className={classes.downloadLink}
-                >
-                  ⬇️ تحميل الملف
-                </a>
+               
               </div>
-              <p className={classes.pdfNote}>
-                إذا لم يتم فتح الملف تلقائيًا، يمكنك تحميله يدويًا من الزر أعلاه.
-              </p>
+              
             </div>
           )}
         </div>
