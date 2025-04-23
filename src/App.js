@@ -29,7 +29,7 @@ function App() {
             <Route path="/Uploded" element={<UpLoader />} />
             <Route path="/login" element={<Login />} /> {/* Updated route for Login */}
             <Route path="/register" element={<Register />} />
-            <Route path="/addarticle" element={<AddArticle />} />
+            {/* <Route path="/addarticle" element={<AddArticle />} /> */}
             <Route path="/ShowBlog" element={<BlogList />} /> 
             <Route path="/blog/:id" element={<BlogDetails />} />
           </Routes>
