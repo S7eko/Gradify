@@ -180,7 +180,7 @@ const Register = () => {
 
               <span>
                 لديك حساب بالفعل؟{" "}
-                <a href="/course/login">تسجيل الدخول</a>
+                <a href="/login">تسجيل الدخول</a>
               </span>
             </form>
           </section>
