@@ -98,12 +98,12 @@ function Navbar() {
                     <div className={classes.profileDropdown} ref={dropdownRef}>
                         <div className={classes.userProfile} onClick={() => setShowProfile(!showProfile)}>
                             <img
-                                src={user?.pictureUrl || "/grad.jpg"}
+                                src={user?.pictureUrl || "/grad.svg"}
                                 className={classes.userImage}
                                 alt="User Profile"
                                 onError={(e) => {
                                     e.target.onerror = null;
-                                    e.target.src = "/grad.jpg";
+                                    e.target.src = "/grad.svg";
                                 }}
                             />
                             <p className={classes.userName}>{user?.userName || "User"}</p>
