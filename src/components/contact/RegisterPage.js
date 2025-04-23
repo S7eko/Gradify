@@ -154,7 +154,7 @@ const Register = () => {
                     checked={role === "student"}
                     onChange={(e) => setRole(e.target.value)}
                   />
-                  طالب
+                  viewer
                 </label>
 
                 <label className={`${classes.role} ${role === "instructor" ? classes.active : ""}`}>
@@ -165,7 +165,7 @@ const Register = () => {
                     checked={role === "instructor"}
                     onChange={(e) => setRole(e.target.value)}
                   />
-                  مدرس
+                  Admin
                 </label>
               </div>
 
