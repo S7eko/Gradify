@@ -52,6 +52,7 @@ const Login = () => {
 
       setSuccess("Login successful. Welcome back!");
       localStorage.setItem("token", result.token);
+      window.dispatchEvent(new Event("storage")); // ✅ هذا السطر يجعل الـ Navbar يتحدث تلقائياً
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       console.error("Login error:", error);
@@ -71,7 +72,6 @@ const Login = () => {
   return (
     <div className={classes.login}>
       <div className={classes.login_content}>
-
         <div className={classes.login_body}>
           <section className={classes.login_body_left}>
             <div className={classes.login_body_left_image}>

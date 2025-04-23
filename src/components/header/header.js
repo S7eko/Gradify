@@ -14,35 +14,35 @@ function Navbar() {
         setIsOpen(!isOpen);
     };
 
+    const fetchCurrentUser = async () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            setUser(null);
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const response = await fetch("https://skillbridge.runasp.net/api/Users/currentUser", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch user data");
+
+            const userData = await response.json();
+            setUser(userData);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+            setUser(null);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchCurrentUser = async () => {
-            const token = localStorage.getItem("token");
-
-            if (!token) {
-                setIsLoading(false);
-                return;
-            }
-
-            try {
-                const response = await fetch("https://skillbridge.runasp.net/api/Users/currentUser", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch user data");
-                }
-
-                const userData = await response.json();
-                setUser(userData);
-            } catch (error) {
-                console.error("Error fetching user data:", error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
         fetchCurrentUser();
 
         const handleClickOutside = (event) => {
@@ -57,13 +57,25 @@ function Navbar() {
         };
     }, []);
 
-    const isStudent = user?.role === "Student";
+    useEffect(() => {
+        const handleStorageChange = () => {
+            fetchCurrentUser(); // ✅ يحدث بيانات المستخدم لما يتغير التوكن
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+        };
+    }, []);
+
+    const isInstructor = user?.role === "Instructor";
     const isLoggedIn = !!user;
 
     const handleLogout = () => {
         localStorage.removeItem("token");
+        setUser(null);
         setShowProfile(false);
-        window.location.reload();
+        window.dispatchEvent(new Event("storage")); // لإجبار التحديث
     };
 
     return (
@@ -73,46 +85,41 @@ function Navbar() {
                 <Link to="/" onClick={toggleNavbar}>الرئيسية</Link>
                 <Link to="/AllProjects" onClick={toggleNavbar}>المشاريع</Link>
 
-                {/* Hide Dashboard link for students */}
-                {!isStudent && (
+                {isLoggedIn && isInstructor && (
                     <Link to="/Uploded" onClick={toggleNavbar}>لوحة التحكم</Link>
                 )}
 
                 <Link to="/dashboard" onClick={toggleNavbar}>أفضل المشاريع</Link>
                 <Link to="/ShowBlog" onClick={toggleNavbar}>المقالات</Link>
 
-
                 {!isLoggedIn ? (
                     <Link to="/login" onClick={toggleNavbar}>تسجيل الدخول</Link>
                 ) : (
                     <div className={classes.profileDropdown} ref={dropdownRef}>
-                            <div className={classes.userProfile} onClick={() => setShowProfile(!showProfile)}>
-                                <img
-                                    src={user?.pictureUrl}
-                                    className={classes.userImage}
-                                    alt="User Profile"
-                                    onError={(e) => {
-                                        e.target.onerror = null; // Prevent infinite loop if fallback fails
-                                        e.target.src = process.env.PUBLIC_URL + "/grad.jpg";
-                                    }}
-                                />
-                                <p className={classes.userName}>{user.userName || "User"}</p>
-                            </div>
+                        <div className={classes.userProfile} onClick={() => setShowProfile(!showProfile)}>
+                            <img
+                                src={user?.pictureUrl || "/grad.jpg"}
+                                className={classes.userImage}
+                                alt="User Profile"
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = "/grad.jpg";
+                                }}
+                            />
+                            <p className={classes.userName}>{user?.userName || "User"}</p>
+                        </div>
                         {showProfile && (
                             <div className={classes.dropdown}>
                                 <div className={classes.profileHeader}>
                                     <FaUser className={classes.profileIcon} />
                                     <div className={classes.profileInfo}>
-                                        <h4>{user.userName || "User"}</h4>
-                                        <p>{user.email || "user@example.com"}</p>
+                                        <h4>{user?.userName || "User"}</h4>
+                                        <p>{user?.email || "user@example.com"}</p>
                                     </div>
                                 </div>
                                 <div className={classes.dropdownDivider}></div>
-                                
-                                <button
-                                    className={classes.dropdownItem}
-                                    onClick={handleLogout}
-                                >
+
+                                <button className={classes.dropdownItem} onClick={handleLogout}>
                                     <FaSignOutAlt className={classes.itemIcon} />
                                     <span>تسجيل الخروج</span>
                                 </button>
