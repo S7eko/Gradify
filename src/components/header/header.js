@@ -88,10 +88,8 @@ function Navbar() {
                 {isLoggedIn && isInstructor && (
                     <Link to="/Uploded" onClick={toggleNavbar}>اضافة مشروع</Link>
                 )}
-
-                <Link to="/dashboard" onClick={toggleNavbar}>أفضل المشاريع</Link>
+                <Link to="/Tool" onClick={toggleNavbar}>أدوات المشروع</Link>
                 <Link to="/ShowBlog" onClick={toggleNavbar}>المقالات</Link>
-
                 {!isLoggedIn ? (
                     <Link to="/login" onClick={toggleNavbar}>تسجيل الدخول</Link>
                 ) : (

@@ -15,6 +15,8 @@ import Register from './components/contact/RegisterPage'; // Import the Register
 import AddArticle from './components/blog/addArticle';
 import BlogList from './components/blog/blogcomponent';
 import BlogDetails from './components/blog/blogDetails';
+import Tools from './components/projects/tools';
+import ToolDetails from './components/projects/ToolDetails';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             {/* <Route path="/addarticle" element={<AddArticle />} /> */}
             <Route path="/ShowBlog" element={<BlogList />} /> 
             <Route path="/blog/:id" element={<BlogDetails />} />
+            <Route path="/Tool" element={<Tools />} />
+            <Route path="/tools/:id" element={<ToolDetails />} />
           </Routes>
         </div>
       </Router>
