@@ -86,7 +86,7 @@ function Navbar() {
                 <Link to="/AllProjects" onClick={toggleNavbar}>المشاريع</Link>
 
                 {isLoggedIn && isInstructor && (
-                    <Link to="/Uploded" onClick={toggleNavbar}>لوحة التحكم</Link>
+                    <Link to="/Uploded" onClick={toggleNavbar}>اضافة مشروع</Link>
                 )}
 
                 <Link to="/dashboard" onClick={toggleNavbar}>أفضل المشاريع</Link>
