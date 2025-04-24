@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './home.module.css';
-import Courses from '../projects/progect'; // مغيرتش الاستيراد
+import Courses from '../projects/progect';
 
 function Home() {
     const navigate = useNavigate();
 
     const handleBrowseProjects = () => {
-        navigate('/challenges'); // لسه محتاج تغيرها لـ /projects لو انت عامل Route كده
+        navigate('/AllProjects');
     };
 
     return (
@@ -51,7 +51,7 @@ function Home() {
                 </div>
             </section>
 
-            <Courses /> {/* نفس اسم المكون زي ما هو */}
+            <Courses />
 
             <section className={classes.cta}>
                 <h2 className={classes.ctaTitle}>شارك مشروعك الآن!</h2>
