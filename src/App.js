@@ -22,6 +22,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
+          <Home />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/AllProjects" element={<AllProjects />} />

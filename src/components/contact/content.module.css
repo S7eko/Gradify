@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   font-family: 'Poppins', Arial, sans-serif;
-  margin: 30px 0 0 0 ;
-  padding: 20px 20px;
+  margin: 30px 0 0 0;
+  padding: 20px;
   box-sizing: border-box;
   width: 100%;
   min-height: 100vh;
@@ -27,7 +27,7 @@
 /* Header Styles */
 .login_header {
   text-align: left;
-  font-size: 28px;
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 700;
   margin-bottom: 32px;
   color: #1c1e53;
@@ -48,7 +48,7 @@
 /* Left Side */
 .login_body_left {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,14 +57,14 @@
 
 .login_body_left h1 {
   color: #fff;
-  font-size: 36px;
+  font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.4;
 }
 
 .login_body_left p {
-  font-size: 18px;
+  font-size: clamp(14px, 2vw, 18px);
   color: #dcdcdc;
   line-height: 1.6;
 }
@@ -72,7 +72,7 @@
 /* Right Side */
 .login_body_right {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
   background-color: #fff;
   padding: 30px;
   border-radius: 12px;
@@ -210,25 +210,32 @@
     margin-top: 20px;
   }
 
-  .login_body_left h1 {
-    font-size: 28px;
+  .login_body_left {
+    padding-right: 0;
   }
 
-  .login_body_left p {
-    font-size: 16px;
+  .login_body_right,
+  .login_body_left {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .login_body_left h1 {
-    font-size: 22px;
+  .login_content {
+    padding: 20px;
   }
 
-  .login_body_left p {
-    font-size: 14px;
+  .login_body {
+    gap: 20px;
+    padding: 20px;
   }
 
   .login_body_right {
     padding: 20px;
+  }
+
+  .login_body_right button {
+    font-size: 16px;
+    padding: 12px 16px;
   }
 }
