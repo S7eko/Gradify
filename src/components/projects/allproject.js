@@ -6,8 +6,9 @@ import classes from './Allprojects.module.css';
 const AllProjects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isLoadingUser, setIsLoadingUser] = useState(true);
   const [error, setError] = useState(null);
-  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
     fetchCurrentUser();
@@ -15,19 +16,30 @@ const AllProjects = () => {
   }, []);
 
   const fetchCurrentUser = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setUser(null);
+      setIsLoadingUser(false);
+      return;
+    }
+
     try {
       const response = await fetch("https://skillbridge.runasp.net/api/Users/currentUser", {
-        credentials: 'include' // if you need to send cookies
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error("Failed to fetch user data");
 
-      const user = await response.json();
-      setUserRole(user?.role);
-    } catch (err) {
-      console.error('Error fetching user data:', err);
+      const userData = await response.json();
+      setUser(userData);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setUser(null);
+    } finally {
+      setIsLoadingUser(false);
     }
   };
 
@@ -41,8 +53,8 @@ const AllProjects = () => {
       }
 
       const result = await response.json();
-
       let projectsData = [];
+
       if (Array.isArray(result)) {
         projectsData = result;
       } else if (result.data && Array.isArray(result.data)) {
@@ -101,7 +113,7 @@ const AllProjects = () => {
     }
   };
 
-  if (loading) {
+  if (loading || isLoadingUser) {
     return <div className={classes.loadingContainer}>جاري تحميل المشاريع...</div>;
   }
 
@@ -153,7 +165,7 @@ const AllProjects = () => {
                   >
                     عرض التفاصيل
                   </Link>
-                  {userRole === 'Instructor' && (
+                  {user?.role === 'Instructor' && (
                     <button
                       onClick={() => handleDelete(project.id || project._id)}
                       className={classes.deleteButton}

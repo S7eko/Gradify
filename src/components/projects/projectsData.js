@@ -958,7 +958,72 @@ const projects = [
     ],
     "commonMistakes": ["تجاهل خصوصية البيانات", "صعوبة الصيانة"],
     "successTips": ["بدء المشروع في مبنى تجريبي", "التعاون مع شركات الطاقة"]
+  },
+  {
+    id: "ai-healthcare-diagnosis",
+    title: "تشخيص الرعاية الصحية باستخدام الذكاء الاصطناعي",
+    description: "نظام يعتمد على الذكاء الاصطناعي لتشخيص الأمراض بناءً على الأعراض وتحليل الصور الطبية.",
+    imageUrl: "https://images.pexels.com/photos/7088480/pexels-photo-7088480.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tools: [
+      { name: "Machine Learning", description: "لبناء نماذج تشخيص الأمراض", link: "#" },
+      { name: "Medical Imaging Datasets", description: "لتدريب النظام على تحليل الصور", link: "#" },
+      { name: "Python Libraries (e.g., TensorFlow)", description: "لتنفيذ النماذج الذكية", link: "#" },
+      { name: "APIs for Healthcare Data", description: "للحصول على بيانات صحية حقيقية", link: "#" }
+    ],
+    steps: [
+      { title: "جمع البيانات الطبية", details: ["الحصول على بيانات وصور طبية", "معالجة البيانات وتنقيحها"] },
+      { title: "تدريب النموذج الذكي", details: ["تصميم نموذج تنبؤي", "استخدام خوارزميات تصنيف دقيقة"] },
+      { title: "اختبار النموذج", details: ["تقييم دقة النموذج باستخدام بيانات جديدة", "تحسين الأداء بالتكرار"] },
+      { title: "دمج النظام في واجهة استخدام", details: ["تطوير تطبيق بسيط لعرض النتائج", "ربط الواجهة بالنموذج"] }
+    ],
+    projectExamples: [
+      { title: "نظام تحليل صور الأشعة السينية", description: "يحدد علامات الالتهاب الرئوي بدقة.", technologies: ["CNN", "X-ray Datasets", "TensorFlow"] },
+      { title: "تطبيق تشخيص مبني على الأعراض", description: "يعتمد على الأسئلة التفاعلية لتحديد المرض المحتمل.", technologies: ["Decision Trees", "NLP", "React Native"] }
+    ],
+    reportTemplate: { structure: ["مقدمة", "أهمية استخدام الذكاء الاصطناعي في الصحة", "تصميم النموذج", "تنفيذ النموذج", "النتائج والتوصيات"] },
+    presentationTips: ["عرض أمثلة حقيقية لتشخيصات النظام", "شرح الخوارزميات المستخدمة ببساطة", "بيان تأثيره على دقة التشخيص"],
+    evaluationCriteria: [
+      { criterion: "الدقة الطبية للنظام", weight: "30%" },
+      { criterion: "جودة تصميم النموذج", weight: "25%" },
+      { criterion: "سهولة الاستخدام", weight: "20%" },
+      { criterion: "التوثيق والعرض", weight: "25%" }
+    ],
+    commonMistakes: ["عدم توازن البيانات", "استخدام صور غير واضحة", "تقييم غير دقيق للأداء"],
+    successTips: ["الاعتماد على بيانات طبية موثوقة", "اختبار النموذج على حالات متعددة", "التعاون مع مختصين في المجال الطبي"]
+  },
+  {
+    id: "smart-transport-system",
+    title: "نظام النقل الذكي باستخدام إنترنت الأشياء",
+    description: "مشروع يهدف إلى تحسين وسائل النقل من خلال تتبع المركبات وتنظيم الحركة تلقائيًا.",
+    imageUrl: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tools: [
+      { name: "GPS Modules", description: "لتتبع المواقع الفعلية للمركبات", link: "#" },
+      { name: "Real-Time Databases", description: "لتخزين ومزامنة بيانات الحركة", link: "#" },
+      { name: "Cloud Platforms", description: "لإدارة البيانات وتحليلها", link: "#" },
+      { name: "Mobile App Framework", description: "لتصميم تطبيق متابعة المستخدم", link: "#" }
+    ],
+    steps: [
+      { title: "تصميم بنية النظام", details: ["تحديد الأجهزة والمستشعرات المستخدمة", "وضع خريطة لتوزيع المركبات"] },
+      { title: "تطوير واجهة المستخدم", details: ["إنشاء تطبيق يعرض مواقع المركبات", "تصميم تجربة استخدام سلسة"] },
+      { title: "الربط بين الأجهزة والتطبيق", details: ["توصيل الأجهزة بالسيرفرات", "تحديث المواقع بشكل لحظي"] },
+      { title: "اختبار النظام", details: ["محاكاة سيناريوهات مرور مختلفة", "مراقبة الأداء والتحسين"] }
+    ],
+    projectExamples: [
+      { title: "تطبيق تتبع الحافلات المدرسية", description: "يعرض موقع الحافلة بدقة للأهالي.", technologies: ["Firebase", "GPS", "Flutter"] },
+      { title: "نظام إدارة أسطول سيارات الأجرة", description: "يعرض المركبات على خريطة ويسهل التواصل.", technologies: ["IoT Devices", "Google Maps API", "React"] }
+    ],
+    reportTemplate: { structure: ["مقدمة", "مشكلات النقل الحالية", "تصميم النظام الذكي", "آلية التنفيذ", "النتائج والتوصيات"] },
+    presentationTips: ["عرض محاكاة حية للمركبات على الخريطة", "شرح تدفق البيانات", "إبراز فوائد التنظيم المروري"],
+    evaluationCriteria: [
+      { criterion: "فعالية تتبع الحركة", weight: "30%" },
+      { criterion: "أمان البيانات وسرعتها", weight: "25%" },
+      { criterion: "إمكانية التوسع والتكامل", weight: "25%" },
+      { criterion: "جودة الواجهة والتجربة", weight: "20%" }
+    ],
+    commonMistakes: ["تأخير تحديث المواقع", "إهمال حالات ضعف الاتصال", "تعقيد واجهة الاستخدام"],
+    successTips: ["استخدام خوارزميات تحسين المسار", "اعتماد تصميم مرن وقابل للتوسع", "اختبار النظام تحت ظروف حقيقية"]
   }
+
 
 ];
 
