@@ -83,7 +83,6 @@ function Navbar() {
             <Link to="/" className={classes.logo}>مشروعي</Link>
             <nav className={`${classes.nav} ${isOpen ? classes.active : ''}`}>
                 <Link to="/" onClick={toggleNavbar}>الرئيسية</Link>
-                <Link to="/AllProjects" onClick={toggleNavbar}>المشاريع السابقة</Link>
 
                 {isLoggedIn && isInstructor && (
                     <>
@@ -91,6 +90,9 @@ function Navbar() {
                         <Link to="/addarticle" onClick={toggleNavbar}>اضافة مقال</Link>
                     </>
                 )}
+                <Link to="/AllProjects" onClick={toggleNavbar}>المشاريع السابقة</Link>
+
+                
 
                 <Link to="/Tool" onClick={toggleNavbar}>افكار جديدة </Link>
                 <Link to="/ShowBlog" onClick={toggleNavbar}>المقالات</Link>
