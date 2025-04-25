@@ -7,7 +7,7 @@
 .searchContainer {
   position: relative;
   max-width: 500px;
-  margin: 0 auto 2rem auto; /* يخلي العنصر في النص أفقيًا */
+  margin: 0 auto 2rem auto;
 }
 
 .searchInput {
@@ -252,7 +252,6 @@
   color: #64748b;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .blogGrid {
     grid-template-columns: 1fr;
