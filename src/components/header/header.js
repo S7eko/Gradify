@@ -68,7 +68,7 @@ function Navbar() {
         };
     }, []);
 
-    const isInstructor = user?.role === "Instructor";
+    const isInstructor = user?.role === "Admin" || user?.role === "Instructor";
     const isLoggedIn = !!user;
 
     const handleLogout = () => {

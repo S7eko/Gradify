@@ -165,7 +165,7 @@ const AllProjects = () => {
                   >
                     عرض التفاصيل
                   </Link>
-                  {user?.role === 'Instructor' && (
+                  {user?.role === 'Admin' && (
                     <button
                       onClick={() => handleDelete(project.id || project._id)}
                       className={classes.deleteButton}

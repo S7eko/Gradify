@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from './content.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -25,6 +25,19 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showAdminOption, setShowAdminOption] = useState(false);
+
+  // Effect to check if email contains @Admin to show admin option
+  useEffect(() => {
+    if (email.includes("@Admin")) {
+      setShowAdminOption(true);
+    } else {
+      setShowAdminOption(false);
+      if (role === "admin") {
+        setRole("");
+      }
+    }
+  }, [email, role]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +47,7 @@ const Register = () => {
     setSuccess("");
     setLoading(true);
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !role) {
       setError("جميع الحقول مطلوبة");
       setLoading(false);
       return;
@@ -104,7 +117,6 @@ const Register = () => {
   return (
     <div className={classes.login}>
       <div className={classes.login_content}>
-
         <div className={classes.login_body}>
           {/* Left Side */}
           <section className={classes.login_body_left}>
@@ -165,8 +177,21 @@ const Register = () => {
                     checked={role === "instructor"}
                     onChange={(e) => setRole(e.target.value)}
                   />
-                  Admin
+                  instructor
                 </label>
+
+                {showAdminOption && (
+                  <label className={`${classes.role} ${role === "admin" ? classes.active : ""}`}>
+                    <input
+                      type="radio"
+                      name="role"
+                      value="admin"
+                      checked={role === "admin"}
+                      onChange={(e) => setRole(e.target.value)}
+                    />
+                    Admin
+                  </label>
+                )}
               </div>
 
               <div className={classes.form_group}>
